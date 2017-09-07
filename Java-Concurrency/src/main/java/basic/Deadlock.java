@@ -1,4 +1,4 @@
-package basic.thread;
+package basic;
 
 public class Deadlock {
 	//监视器对象

@@ -1,8 +1,6 @@
-package basic.thread;
+package basic.createThread;
 
 import org.junit.Test;
-
-import java.text.BreakIterator;
 
 /**
  * 测试Thread基本操作

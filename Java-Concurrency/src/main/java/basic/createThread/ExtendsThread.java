@@ -1,4 +1,4 @@
-package basic.thread;
+package basic.createThread;
 
 import org.junit.Test;
 
@@ -6,14 +6,14 @@ import org.junit.Test;
  * 继承Thread
  * Created by conglin.liu on 2017/9/6.
  */
-public class ExtendsThread01 extends Thread{
+public class ExtendsThread extends Thread{
 
     /**
      * 创建线程
      */
     @Test
     public void createThread() {
-        ExtendsThread01 extendsThread01 = new ExtendsThread01();
+        ExtendsThread extendsThread01 = new ExtendsThread();
         new Thread(extendsThread01).start();
     }
 

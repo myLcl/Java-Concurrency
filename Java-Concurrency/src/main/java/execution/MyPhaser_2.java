@@ -21,7 +21,7 @@ public class MyPhaser_2 {
           
         //  
         for(int i = 0; i < count; i++) {  
-            System.out.println("starting thread, id: " + i);  
+            System.out.println("starting createThread, id: " + i);
             final Thread thread = new Thread(new Task(i, phaser));  
             thread.start();  
         }  

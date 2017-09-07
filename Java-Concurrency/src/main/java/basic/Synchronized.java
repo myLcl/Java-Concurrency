@@ -1,5 +1,8 @@
 package basic;
 
+/**
+ *
+ */
 public class Synchronized {
 	private int count;
 	
@@ -16,14 +19,14 @@ public class Synchronized {
 	}
 	
     public static void main(String[] args) throws Exception {
-    	Thread1 t1 = new Thread1(new Synchronized());
-    	new Thread(t1).start();
-    	new Thread(t1).start();
+//    	Thread1 t1 = new Thread1(new Synchronized());
+//    	new Thread(t1).start();
+//    	new Thread(t1).start();
     	
-    	/*Thread2 t2 = new Thread2();
+    	Thread2 t2 = new Thread2();
     	new Thread(t2).start();
-    	new Thread(t2).start();*/
-    	
+    	new Thread(t2).start();
+
     	/*Thread3 t3_0 = new Thread3();
     	Thread3 t3_1 = new Thread3();
     	new Thread(t3_0).start();

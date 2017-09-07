@@ -1,4 +1,4 @@
-package basic.thread;
+package basic.createThread;
 
 /**
  * 创建线程, 实现Runnable接口
