@@ -1,5 +1,8 @@
 package basic;
 
+/**
+ * 内存可见性关键字:Volatile
+ */
 public class Volatile  implements Runnable {  
     private int value;    
     private volatile boolean missedIt;  
