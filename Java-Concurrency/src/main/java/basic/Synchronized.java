@@ -1,7 +1,11 @@
 package basic;
 
+import org.junit.Test;
+
 /**
- *
+ *测试Synchronized关键字
+ * <p>
+ * 找main()
  */
 public class Synchronized {
 	private int count;
@@ -19,21 +23,81 @@ public class Synchronized {
 	}
 	
     public static void main(String[] args) throws Exception {
-//    	Thread1 t1 = new Thread1(new Synchronized());
-//    	new Thread(t1).start();
-//    	new Thread(t1).start();
-    	
-    	Thread2 t2 = new Thread2();
-    	new Thread(t2).start();
-    	new Thread(t2).start();
+//		codeBlock00();
+//		codeBlock01();
 
-    	/*Thread3 t3_0 = new Thread3();
-    	Thread3 t3_1 = new Thread3();
-    	new Thread(t3_0).start();
-    	new Thread(t3_1).start();*/
-    	
+//		memberMethod00();
+//		memberMethod01();
+
+		staticMethod();
     }
+
+
+	/**
+	 * 锁代码块
+	 * <p>
+	 *  给定一个对象, 开启多个线程 , 线程顺序输出
+	 */
+	public static void codeBlock00() {
+		Synchronized s = new Synchronized();
+		Thread1 t1 = new Thread1(s);
+		new Thread(t1).start();
+		new Thread(t1).start();
+	}
+
+	/**
+	 * 锁代码块
+	 * <p>
+	 *  给定一个对象, 开启多个线程 , 线程输出顺序是乱的
+	 */
+	public static void codeBlock01() {
+		Synchronized s1 = new Synchronized();
+		Synchronized s2 = new Synchronized();
+		Thread1 t1 = new Thread1(s1);
+		Thread1 t2 = new Thread1(s2);
+		new Thread(t1).start();
+		new Thread(t2).start();
+	}
+
+
+	/**
+	 * 锁成员方法
+	 * <p>
+	 * 一个对象开启多个线程 , 线程顺序输出
+	 */
+	public static void memberMethod00() {
+		Thread2 t = new Thread2();
+		new Thread(t).start();
+		new Thread(t).start();
+	}
+	/**
+	 * 锁成员方法
+	 * <p>
+	 *  多个对象分别开启线程 , 线程的输出顺序是乱的
+	 */
+	public static void memberMethod01() {
+		Thread2 t2 = new Thread2();
+		Thread2 t1 = new Thread2();
+		new Thread(t2).start();
+		new Thread(t1).start();
+	}
+
+
+	/**
+	 * 锁静态方法
+	 * <p>
+	 *  多个对象, 开启多个线程, 线程的顺序输出
+	 */
+	public static void  staticMethod() {
+		Thread3 t0 = new Thread3();
+		Thread3 t1 = new Thread3();
+		new Thread(t0).start();
+		new Thread(t1).start();
+	}
+
 }
+
+
 
 /** 修饰代码块 */
 class Thread1 implements Runnable{
@@ -47,7 +111,7 @@ class Thread1 implements Runnable{
 		 //修饰代码块: 锁的是()中配置的对象
 		 synchronized(s) {
 			 s.getCount();
-			 
+
              try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
@@ -61,7 +125,7 @@ class Thread1 implements Runnable{
 class Thread2 implements Runnable{
 	private int count;
 	
-	//修饰成员方法,锁的是调用它的对象,该例中也即是调用它的线程
+	//修饰成员方法,锁的是调用它的对象
 	public synchronized void run() {
 		 for (int i = 0; i < 5; i ++) {
 		      try {
@@ -79,7 +143,7 @@ class Thread2 implements Runnable{
 class Thread3 implements Runnable {
 	private static int count;
 	
-	//修饰静态方法, 锁的是这个类的所有对象
+	//修饰静态方法, 锁的是class对象
 	public static synchronized void getCounter() {
 		for (int i = 0; i < 5; i ++) {
 	         try {
