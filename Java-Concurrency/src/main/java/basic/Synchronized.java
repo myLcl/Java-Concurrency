@@ -1,11 +1,10 @@
 package basic;
 
-import org.junit.Test;
 
 /**
  *测试Synchronized关键字
  * <p>
- * 找main()
+ * main()是测试入口
  */
 public class Synchronized {
 	private int count;
