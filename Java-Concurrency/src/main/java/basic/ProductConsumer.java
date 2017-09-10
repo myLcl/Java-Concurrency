@@ -1,6 +1,7 @@
 package basic;
 
 /**
+ * 使用synchronized 实现生产者消费者模式
  *wait(), notify() : 生产者消费者 
  */
 public class ProductConsumer{

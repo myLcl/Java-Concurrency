@@ -8,7 +8,7 @@ package basic;
  */
 public class Synchronized {
 	private int count;
-	
+
 	public void getCount(){
 		for (int i = 0; i < 5; i ++) {
 		      try {
@@ -28,8 +28,15 @@ public class Synchronized {
 //		memberMethod00();
 //		memberMethod01();
 
-		staticMethod();
-    }
+//		staticMethod();
+
+		//可重入
+		final Thread4 t = new Thread4(); //保证锁唯一
+		for (int i = 0; i <5 ; i++) {
+			new Thread(t).start();
+			
+		}
+	}
 
 
 	/**
@@ -157,4 +164,19 @@ class Thread3 implements Runnable {
 	public void run() {
 		getCounter();
 	}
+}
+
+
+//验证可重入的特性
+class Thread4 implements Runnable{
+
+
+	public synchronized  void run() { //第一次获得t的锁
+		doSomething();  //再次活的t的锁
+	}
+
+	public synchronized void doSomething() {
+		System.out.println("----");
+	}
+
 }
